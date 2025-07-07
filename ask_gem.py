@@ -2,7 +2,7 @@ from google import genai
 from google.api_core import retry
 from google.genai import types
 
-api_key = "AIzaSyD_paTzeiJYVZK5vd4VnZnGKKv88kvTNss"
+api_key = ""
 is_retriable = lambda e: (isinstance(e, genai.errors.APIError) and e.code in {429, 503})
 
 if not hasattr(genai.models.Models.generate_content, '__wrapped__'):
