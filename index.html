@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smaller Step Animation</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    :root {
+      --block-size: min(3vw, 12px); /* ⬅️ 80% smaller than original */
+    }
+
+    .container {
+      position: relative;
+      width: calc(3 * var(--block-size));
+      height: calc(3 * var(--block-size));
+    }
+
+    .block {
+      position: absolute;
+      background-color: black;
+      opacity: 0;
+      transform: translateX(-300%);
+      animation-duration: 2s;
+      animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+    }
+
+    /* Top block (1 unit wide) */
+    .block1 {
+      width: var(--block-size);
+      height: var(--block-size);
+      top: 0;
+      left: 0;
+      animation-name: slideIn1;
+      animation-delay: 0s;
+    }
+
+    /* Middle block (2 units wide) */
+    .block23 {
+      width: calc(2 * var(--block-size));
+      height: var(--block-size);
+      top: var(--block-size);
+      left: 0;
+      animation-name: slideIn2;
+      animation-delay: 0.4s;
+    }
+
+    /* Bottom block (3 units wide) */
+    .block456 {
+      width: calc(3 * var(--block-size));
+      height: var(--block-size);
+      top: calc(2 * var(--block-size));
+      left: 0;
+      animation-name: slideIn3;
+      animation-delay: 0.8s;
+    }
+
+    @keyframes slideIn1 {
+      0%   { transform: translateX(-300%); opacity: 0; }
+      25%  { transform: translateX(0); opacity: 1; }
+      85%  { transform: translateX(0); opacity: 1; }
+      100% { transform: translateX(-300%); opacity: 0; }
+    }
+
+    @keyframes slideIn2 {
+      0%   { transform: translateX(-300%); opacity: 0; }
+      25%  { transform: translateX(0); opacity: 1; }
+      85%  { transform: translateX(0); opacity: 1; }
+      100% { transform: translateX(-300%); opacity: 0; }
+    }
+
+    @keyframes slideIn3 {
+      0%   { transform: translateX(-300%); opacity: 0; }
+      25%  { transform: translateX(0); opacity: 1; }
+      85%  { transform: translateX(0); opacity: 1; }
+      100% { transform: translateX(-300%); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="block block1"></div>
+    <div class="block block23"></div>
+    <div class="block block456"></div>
+  </div>
+</body>
+</html>
